@@ -1,0 +1,137 @@
+<html>
+</head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516968926110807" crossorigin="anonymous"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<p>離散信號<span
+class="math inline">\(x(n)\)</span>經傅利葉轉換後之頻譜<span
+class="math inline">\(X(k)\)</span>如次： <span class="math display">\[
+\begin{aligned}
+X(k) &amp;= DFT{ x(n)}\\
+     &amp;= \sum_{n=0}^{N-1} x(n) \cdot e^{-j \frac{2π}{N}nk} \\
+k &amp;= 0,1,…,N-1  
+\end{aligned}
+\]</span> 由上式知前開信號被轉換成頻率0至N-1之複指數。</p>
+<p>旋轉因子定義如次： <span class="math display">\[
+\begin{aligned}
+W_N      &amp;= e^{-j \frac{2π}{N}} \\
+W_N^{nk} &amp;= e^{-j \frac{2π}{N}nk}
+\end{aligned}
+\]</span> 頻譜代入旋轉因子得：</p>
+<p><span class="math display">\[
+\begin{aligned}
+X(k) &amp;= DFT{ x(n)} \\
+     &amp;= \sum_{n=0}^{N-1} x(n) \cdot W_N^{nk}
+\end{aligned}
+\]</span></p>
+<p>信號經採樣能區分的頻率為採樣頻率一半。</p>
+<p>周期信號可分解成有限諧波信號，非周期信號則分解成無限諧波信號。</p>
+<h3 id="三角級數轉換成指數級數">三角級數轉換成指數級數</h3>
+<p>周期信號之餘弦級數如次： <span class="math display">\[
+f(t)=a_0+\sum_{n=1}^{\infty}c_n\cos(nω_1t)
+\]</span> 又歐拉公式如次： <span class="math display">\[
+\cos x = \frac{e^{jx}+e^{-jx}}{2}
+\]</span> 餘弦項以指數項替換得 <span class="math display">\[
+\begin{aligned}
+&amp;c_n\cos(nω_1t+φ_n) \\
+=&amp;\frac{1}{2}c_n[e^{j(nω_1t+φ_n)}+e^{-j(nω_1t+φ_n)}] \\
+=&amp;\frac{1}{2}c_n e^{jφ_n} e^{jnω_1t}+\frac{1}{2}c_n  e^{-jφ_n}
+e^{-jnω_1t} \\
+=&amp;F_n e^{jnω_1t} + F_{-n} e^{-jnω_1t} \\
+&amp;其中F_n=\frac{1}{2}c_n e^{jφ_n}，F_{-n}=\frac{1}{2}c_n e^{-jφ_n}。
+\end{aligned}
+\]</span> 代入前開級數得指數級數如次： <span class="math display">\[
+f(t)=a_0+\sum_{n=-\infty}^{\infty}F_n e^{jnω_1t}
+\]</span></p>
+<p>發送方將訊息轉成信號經由通訊系統傳輸至接收方。</p>
+<p>信號可由函數表達。</p>
+<h3 id="周期信號">周期信號</h3>
+<p>周期信號係信號每經過一個周期會重覆出現，周而復始，無始無終，其函數如次：
+<span class="math display">\[
+f(t) = f(t+nT), n=0,±1,±2…
+\]</span></p>
+<p>其中t為時點，最小周期T稱基波周期。</p>
+<p>頻率為信號於1秒內重覆次數如下式： <span class="math display">\[
+f_1 = \frac{1}{T}
+\]</span> 由上式知其為周期之倒數。</p>
+<p>角頻率則為2π秒重覆次數，如下式： <span class="math display">\[
+ω = 2πf_1 = \frac{2π}{T}
+\]</span></p>
+<p>頻率係由系統的物理性質決定。</p>
+<h3 id="取樣">取樣</h3>
+<p>取樣頻率係依需求設置。</p>
+<h3 id="離散信號">離散信號</h3>
+<p>離散信號係等間隔取樣所得，如下式： <span class="math display">\[
+x(t) = x(nT_s), n \in \mathbb{Z}
+\]</span> 其每間隔<span class="math inline">\(T_s\)</span>取樣1次。</p>
+<p>因取樣間隔為常數，亦可以下式表示： <span class="math display">\[
+x(n), n \in \mathbb{Z}
+\]</span> 上式形成樣值序列或如次： <span class="math display">\[
+{……1, 3, 5, 7, 9……}
+\]</span> 波形為各樣值之線段。</p>
+<h3 id="信號分解">信號分解</h3>
+<p>信號分解係將信號分解成子信號，而正交函數分解，係將信號函數分解成不同子信號函數多項式如次：
+<span class="math display">\[
+f_1(t) = c_{12}f_2(t)+f_e(t)
+\]</span></p>
+<p>其中<span
+class="math inline">\(c_{12}\)</span>稱為投影係數，表示信號投影在子信號<span
+class="math inline">\(f_2(t)\)</span>軸的量，類比於向量<span
+class="math inline">\((x, y)\)</span>投影在 x 軸上量為<span
+class="math inline">\(x\)</span>，亦為子信號<span
+class="math inline">\(f_2(t)\)</span>對信號<span
+class="math inline">\(f_1(t)\)</span>的影響程度； <span
+class="math inline">\(f_e(t)\)</span>稱為誤差信號，即信號與子信號<span
+class="math inline">\(f_2(t)\)</span>的差異程度，其於區間<span
+class="math inline">\(t_1\)</span>至<span
+class="math inline">\(t_k\)</span>之方均誤差即平均功率如次： <span
+class="math display">\[
+\overline{ε^2} = \overline{f_e^2(t)} =
+\frac{1}{t_2-t_1} \int_{t_1}^{t_2}
+\]</span></p>
+<p>正交函數分解係找出投影係數使誤差信號在區間之方均誤差最小。</p>
+<p>兩信號在一區間正交係其信號乘積之積分為零，如次式： <span
+class="math display">\[
+\int_{t_1}^{t_2} f_1(t)f_2(t)dt=0
+\]</span> 表達信號<span class="math inline">\(f_1\)</span>與<span
+class="math inline">\(f_2\)</span>在區間<span
+class="math inline">\([t_1,t_2]\)</span>正交。</p>
+<p>三角正交函數集如次式： <span class="math display">\[
+\int_0^{T_0}\sin(nω_0t)\cos(nω_0t)dt=0 \\
+\]</span></p>
+<p>複變正交函數集如次式： <span class="math display">\[
+\int_{t_1}^{t_2}g_i(x)g_j^*(t)dt=
+\begin{cases}
+0 &amp; i \neq j \\
+K_i &amp; i=j
+\end{cases}
+\]</span></p>
+<p>周期信號<span class="math inline">\(f(t)\)</span>之基波周期為<span
+class="math inline">\(T_0\)</span>，則基波角頻率<span
+class="math inline">\(ω_0=\frac{2π}{T_0}\)</span>，基波2倍頻率之信號稱2次諧波，3倍為3次諧波，n倍為n次諧波，基波周期必為其任意諧波疊加後之周期。</p>
+<p>前開信號之函數可分解為諧波三角函數級數如次： <span
+class="math display">\[
+f(t)=a_0+\sum_{n=1}^{\infty} [a_n \cos(nω_0t)+b_n\sin(nω_0t)]
+\]</span> 同頻率之三角函數合併簡化為諧波餘弦形式如次： <span
+class="math display">\[
+f(t)=a_0+\sum_{n=1}^{\infty}c_n\cos(nω_0t)
+\]</span> 運用歐拉公式轉換成指數級數形式如次： <span
+class="math display">\[
+f(t)=\sum_{n=-\infty }^{\infty}F_ne^{jnω_1t}
+\]</span> 其系數公式如次： <span class="math display">\[
+F_n=\frac{1}{T_1}\int_{t_0}^{t_0+T_1}f(t)e^{-jnω_1t}dt
+\]</span></p>
+<h3 id="脈沖信號">脈沖信號</h3>
+<p>脈沖信號函數如次： <span class="math display">\[
+δ(t)=\lim_{τ \to 0}\frac{1}{τ}[u(t+\frac{τ}{2})-u(t-\frac{τ}{2})]
+\]</span></p>
+
+<table>
+<tr><th>請參閱</th></tr>
+<tr><td><a href="https://fhopecc.blogspot.com/2023/06/blog-post_7.html">股票評價從股市小白到專業完全指南，快速掌握熱門投資趨勢！</a></td></tr>
+<tr><td><a href="https://moneylogblog.blogspot.com/2023/05/blog-post.html">吃政府吃夠夠！為您揭露歷年取得政府標案金額前百大上市櫃公司……</a></td></tr>
+<tr><td><a href="https://moneylogblog.blogspot.com/2023/06/blog-post_7.html">成長股年化報酬率榜</a></td></tr>
+<tr><td><a href="(http://fhopecc.blogspot.com/2023/05/blog-post_15.html)">合約負債占營收比前百大</a></td></tr>
+</table>
+</html>
